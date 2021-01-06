@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html lang="zxx">
+
+<head>
+  <title>⊠-afixe</title>
+  <link id="size-stylesheet" rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+</head>
+
+<body>
+<section class="all">
+
+  <div class="header">
+      <img class="xicon" src="images/xtop.svg">
+      <img class="othericons" src="images/6x.svg">
+      <img class="othericons" src="images/3x.svg">
+      <img class="othericons" src="images/1x.svg">
+      <a id="next" onclick="nextPage()" value="next"><img class="othericons" src="images/next.svg"></a>
+  </div>
+
+  <div class="inside">
+    <div class="forx">
+        <iframe id="slot1" class="poster" src=""/></iframe>
+
+      <svg xmlns="http://www.w3.org/2000/svg" class="thex"><line x1="0" y1="0" x2="100%" y2="100%" stroke="white" stroke-width="1"/><line x1="100%" y1="0" x2="0" y2="100%" stroke="white" stroke-width="1"/></svg>
+      <div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inside">
+    <div class="forx">
+      <iframe id="slot2" class="poster" src="2.html"/></iframe>
+
+      <svg xmlns="http://www.w3.org/2000/svg" class="thex"><line x1="0" y1="0" x2="100%" y2="100%" stroke="white" stroke-width="1"/><line x1="100%" y1="0" x2="0" y2="100%" stroke="white" stroke-width="1"/></svg>
+    </div>
+  </div>
+
+  <div class="inside end">
+    <div class="forx">
+      <iframe id="slot3" class="poster" src="3.html"/></iframe>
+
+      <svg xmlns="http://www.w3.org/2000/svg" class="thex"><line class="xline" x1="0" y1="0" x2="100%" y2="100%" stroke="white" stroke-width="1"/><line class="xline" x1="100%" y1="0" x2="0" y2="100%" stroke="white" stroke-width="1"/></svg>
+    </div>
+  </div>
+
+    <div class="footer">
+        <div class="info" style="width:50%;">
+          <a><strong>⊠ Afixe</strong> trata de volver a traer html como arte de por si mismo en forma de 'live posters'. Los proyectos demonstrados seran open source con la idea de que ademas de ser arte, podrian descomponerse en distintas partes interactivas utilizables libremente.</a><br><br>
+          <a href="" class="fade">Someter tu ⊠ aqui</a><br>
+          <a href="" class="fade">Embeddealos</a><br>
+          <a href="" class="fade">Comparte esta pagina</a><br>
+          <a href="" class="fade">Pero lo mas importante, no trates de compartirlos en fomato de imagenes/videos ;)</a><br><br>
+        </div>
+        <img class="sq" src="images/plussq.svg">
+    </div>
+
+    <!--
+
+    <a><strong>⊠ Afixe</strong> is trying to bring back html as an artform itself. This is an open sourced project with the idea that as much as it is art, it can be decomposed into other types of usable interactive parts.</a><br><br>
+    <a href="" class="fade">Submit your ⊠ here</a><br>
+    <a href="" class="fade">Embed them</a><br>
+    <a href="" class="fade">Share this page</a><br>
+    <a href="" class="fade">But most of importantly don't try and share them as image/video form ;)</a><br><br>
+  </div>
+  <div class="info" style="text-align:right; margin-bottom: -4vh;">
+    <a style="font-size: 12px; margin-right: -2vh;">project and website by</a>
+
+
+[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]
+
+    var firstslot1 = 1;
+    document.getElementById("slot1").src = firstslot1 + '.html';
+
+    function nextposts() {
+        var check = document.getElementById("slot1").src;
+        var current = check.replace(".html", "");
+        var newpo = current + 3;
+        var num = parseInt(newpo);
+        document.getElementById("slot1").src = num + ".html";
+    }
+
+  -->
+
+</section>
+
+<script>
+
+/* -----------------
+
+Instrucctions to add posters:
+
+1- add html with
+
+-------------------*/
+
+var list = new Array();
+var pageList = new Array();
+var currentPage = 1;
+var numberPerPage = 1;
+var numberOfPages = 0;
+
+function makeList() {
+for (x = 1; x < 1000; x++)
+    list.push(x);
+
+numberOfPages = getNumberOfPages();
+}
+
+function getNumberOfPages() {
+return Math.ceil(list.length / numberPerPage);
+}
+
+function nextPage() {
+currentPage += 3;
+loadList();
+loadList2();
+loadList3();
+}
+
+function previousPage() {
+currentPage -= 3;
+loadList();
+}
+
+function firstPage() {
+currentPage = 1;
+loadList();
+}
+
+function lastPage() {
+currentPage = numberOfPages;
+loadList();
+}
+
+function loadList() {
+var begin = ((currentPage - 1) * numberPerPage);
+var end = begin + numberPerPage;
+
+pageList = list.slice(begin, end);
+drawList();
+}
+
+function drawList() {
+  document.getElementById("slot1").src = "";
+for (r = 0; r < pageList.length; r++) {
+    document.getElementById("slot1").src = pageList[r] + ".html";
+}
+}
+
+/*----------2----------*/
+
+function loadList2() {
+var begin = ((currentPage) * numberPerPage);
+var end = begin + numberPerPage;
+
+pageList = list.slice(begin, end);
+drawList2();
+}
+
+function drawList2() {
+  document.getElementById("slot2").src = "";
+for (r = 0; r < pageList.length; r++) {
+    document.getElementById("slot2").src = pageList[r] + ".html";
+}
+}
+
+
+/*----------3----------*/
+
+function loadList3() {
+var begin = ((currentPage + 1) * numberPerPage);
+var end = begin + numberPerPage;
+
+pageList = list.slice(begin, end);
+drawList3();
+check();
+}
+
+function drawList3() {
+  document.getElementById("slot3").src = "";
+for (r = 0; r < pageList.length; r++) {
+    document.getElementById("slot3").src = pageList[r] + ".html";
+}
+}
+
+function check() {
+document.getElementById("next").disabled = currentPage == numberOfPages ? true : false;
+document.getElementById("previous").disabled = currentPage == 1 ? true : false;
+document.getElementById("first").disabled = currentPage == 1 ? true : false;
+document.getElementById("last").disabled = currentPage == numberOfPages ? true : false;
+}
+
+function load() {
+makeList();
+loadList();
+}
+
+window.onload = load;
+
+</script>
+
+</body>
+
+
+</html>
